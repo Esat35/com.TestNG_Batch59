@@ -13,7 +13,9 @@ import utilities.TestBase;
 import java.time.Duration;
 public class C04_DependsOnMethods  {
     /*
-    ----------------
+      DependsOnMethods test method'larinin calisma siralamasina karismaz
+      Sadece bagli olan test, baglandigi testin sonucuna bakar
+      baglandigi test PASSED olmazsa, baglanan test hic calismaz(ignore)
      */
     WebDriver driver;
     @BeforeClass
