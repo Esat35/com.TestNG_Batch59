@@ -8,6 +8,12 @@ import org.testng.annotations.BeforeMethod;
 import java.time.Duration;
 public abstract class TestBase {
     // abstract yapmamizin sebebi, bu class'dan obje uretilmesinin onune gecmektir.
+
+    // @BeforeMethod ve @AfterMethod  notasyonlari
+    // JUnit'deki @Before ve @After gibidir
+    // her test method'undan once ve sonra calisirlar
+
+
    protected WebDriver driver;
     @BeforeMethod
     public  void setUp(){

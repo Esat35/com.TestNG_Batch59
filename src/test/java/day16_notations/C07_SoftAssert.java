@@ -66,12 +66,16 @@ public class C07_SoftAssert extends TestBase {
         softAssert.assertEquals(secilenOption, expectedOption, "secilen option uygun degil");
 
         // 10. soft assert kullanarak DropDown listesinin su secenekleri oldugunu test edin "Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)","Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)","Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)"
-        List<WebElement> optionList = select.getOptions();
-        List<String> expectedList = new ArrayList<>(Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)", "Switzerland (franc)", "China (yuan)", "Denmark (krone)", "Eurozone (euro)", "Great Britain (pound)", "Hong Kong (dollar)", "Japan (yen)", "Mexico (peso)", "Norway (krone)", "New Zealand (dollar)", "Sweden (krona)", "Singapore (dollar)", "Thailand (baht)"));
-        List<String> actualList = optionList.stream().map(WebElement::getText).collect(Collectors.toList());
-        Collections.sort(expectedList);
-        Collections.sort(actualList);
-        softAssert.assertEquals(actualList,expectedList,"Listeler aynı degil");
+        List<WebElement> tumOpsiyonlar = select.getOptions();
+        List<String> ecpectedOpsiyonlar = new ArrayList<>(Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)", "Switzerland (franc)", "China (yuan)", "Denmark (krone)", "Eurozone (euro)", "Great Britain (pound)", "Hong Kong (dollar)", "Japan (yen)", "Mexico (peso)", "Norway (krone)", "New Zealand (dollar)", "Sweden (krona)", "Singapore (dollar)", "Thailand (baht)"));
+      List<String> yenıOpsıyonList=tumOpsiyonlar.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        Collections.sort(ecpectedOpsiyonlar);
+        Collections.sort(yenıOpsıyonList);
+
+        softAssert.assertEquals(yenıOpsıyonList, ecpectedOpsiyonlar, " lısteler uyusmuyor");
         softAssert.assertAll();
+
+
     }
 }
