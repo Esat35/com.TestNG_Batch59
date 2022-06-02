@@ -25,15 +25,20 @@ public class Q3_SoftAssert {
     @Test
     public void sauceDemoSoft(){
         Driver.getDriver().get("https://www.saucedemo.com/");
+
         SauceDemoPage sdpage = new SauceDemoPage();
+
         sdpage.username.sendKeys("standard_user");
         sdpage.password.sendKeys("secret_sauce");
         sdpage.loginButton.click();
+
         Select select =new Select(sdpage.dropDown);
         select.selectByVisibleText("Price (low to high)");
+
         String expected = "PRICE (LOW TO HIGH)";
         String actual = select.getFirstSelectedOption().getText();
         String actual2 = Driver.getDriver().findElement(By.className("active_option")).getText();
+
         SoftAssert softAssert=new SoftAssert();
         softAssert.assertEquals(actual,expected);
         softAssert.assertEquals(actual2,expected);
@@ -47,7 +52,9 @@ public class Q3_SoftAssert {
         sdpage.loginButton.click();
         Select select =new Select(sdpage.dropDown);
         select.selectByIndex(2);
+
         ArrayList<Double> urunlerDouble = new ArrayList<>();
+
         for (WebElement each: sdpage.urunler){
             //String fiyatStr = each.getText().replaceAll("$", "");
             String fiyatStr = each.getText().replaceAll("^\\D", "");

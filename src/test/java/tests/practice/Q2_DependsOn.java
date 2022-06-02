@@ -13,6 +13,8 @@ public class Q2_DependsOn extends TestBase {
        daha sonra google a bagimli olarak amazon a gidin
  driver i kapatin
 */
+
+
     @Test
     public void facebookTest(){
         driver.get("http://www.facebook.com");
