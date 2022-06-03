@@ -8,7 +8,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pages.FacebookPage;
+import pages.TwitterPage;
+import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 import utilities.TestBase;
 
 public class Q6_DropDown_FakerClass extends TestBase {
@@ -17,13 +21,14 @@ public class Q6_DropDown_FakerClass extends TestBase {
 
     @Test
     public void twitter() {
-        Driver.getDriver().get("https://www.twitter.com");
-        Driver.getDriver().findElement(By.xpath("(//span[@class='css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0'])[5]")).click();
-        WebElement isimKutusu=Driver.getDriver().findElement(By.xpath("(//div[@class='css-1dbjc4n r-18u37iz r-16y2uox r-1wbh5a2 r-1wzrnnt r-1udh08x r-xd6kpl r-1pn2ns4 r-ttdzmv'])[1]"));
+        TwitterPage twitterPage=new TwitterPage();
+        Driver.getDriver().get(ConfigReader.getProperty("twitterUrl"));
+        twitterPage.telVeyaEpostaIleKayitButonu.click();
         Actions actions=new Actions(Driver.getDriver());
         Faker faker=new Faker();
+        twitterPage.kayitIsimKutusu.sendKeys(faker.name().firstName());
 
-        isimKutusu.sendKeys(faker.name().firstName());
+
         actions.sendKeys(Keys.TAB)
                 .sendKeys(faker.phoneNumber().cellPhone())
                 .sendKeys(Keys.TAB)

@@ -22,4 +22,6 @@ public class FacebookPage {
 
     @FindBy(className = "_9ay7")
     public WebElement girilemediYaziElementi;
+
+
 }
